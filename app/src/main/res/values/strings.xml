@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Suite Car</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_cadastro_veiculo">CadastroVeiculo</string>
+    <string name="title_activity_combustivel">Combustivel</string>
+    <string name="title_activity_preventiva">preventiva</string>
+    <string name="title_activity_lista_veiculos">listaVeiculos</string>
+    <string name="title_activity_tela_inicial">TelaInicial</string>
+</resources>

@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.evandro.tcc.suitecar.Combustivel"
+    tools:showIn="@layout/activity_combustivel">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Consumo"
+        android:id="@+id/consumoCombustivel"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp" />
+
+
+
+    />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Dia"
+        android:id="@+id/consumoDia"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_alignBaseline="@+id/consumoMes"
+        android:layout_alignBottom="@+id/consumoMes"
+        android:layout_toLeftOf="@+id/consumoCombustivel"
+        android:layout_toStartOf="@+id/consumoCombustivel"
+        android:layout_marginRight="23dp"
+        android:layout_marginEnd="23dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Mês"
+        android:id="@+id/consumoMes"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:layout_alignBaseline="@+id/consumoAno"
+        android:layout_alignBottom="@+id/consumoAno"
+        android:layout_centerHorizontal="true" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ano"
+        android:id="@+id/consumoAno"
+        android:layout_row="0"
+        android:layout_column="2"
+        android:layout_below="@+id/consumoCombustivel"
+        android:layout_toRightOf="@+id/consumoCombustivel"
+        android:layout_toEndOf="@+id/consumoCombustivel"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp" />
+
+    <View
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:background="#CDC5BF"
+        android:id="@+id/linhaCombustivel"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_below="@+id/consumoMes"
+        android:layout_centerHorizontal="true" />
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gridLayout"
+        android:layout_below="@+id/linhaCombustivel"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15,00R$    "
+            android:id="@+id/custoDia"
+            android:layout_row="0"
+            android:layout_column="0" />
+
+        <View
+            android:layout_height="15dp"
+            android:layout_width="1dp"
+            android:background="#CDC5BF"
+            android:layout_marginTop="2dp"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:id="@+id/linhaGridAbastecimento01" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   450,00R$   "
+            android:id="@+id/custoMes"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:layout_alignBottom="@+id/custoAno"
+            android:layout_alignLeft="@+id/custoAno"
+            android:layout_alignStart="@+id/custoAno" />
+
+        <View
+            android:layout_height="15dp"
+            android:layout_width="1dp"
+            android:background="#CDC5BF"
+            android:layout_marginTop="2dp"
+            android:layout_column="3"
+            android:layout_row="0"
+            android:id="@+id/linhaGrid02" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   5400,00R$"
+            android:id="@+id/custoAno"
+            android:layout_row="0"
+            android:layout_column="4" />
+
+    </GridLayout>
+
+    <View
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:background="#CDC5BF"
+        android:id="@+id/linhaCombustivel2"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_below="@+id/gridLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"/>
+
+
+
+    <View
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:background="#CDC5BF"
+        android:id="@+id/linhaCombustivel02"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_below="@+id/gridConsumo02"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Total:  "
+        android:id="@+id/consumoTotal"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/linhaCombustivel2"
+        android:layout_toLeftOf="@+id/consumoMes"
+        android:layout_toStartOf="@+id/consumoMes" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="2542,34R$"
+        android:id="@+id/totConsumo"
+        android:layout_alignBottom="@+id/consumoTotal"
+        android:layout_toRightOf="@+id/consumoTotal"
+        android:layout_toEndOf="@+id/consumoTotal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Dia"
+        android:id="@+id/kmDia"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_below="@+id/kmTotal"
+        android:layout_toLeftOf="@+id/gridEficiencia"
+        android:layout_toStartOf="@+id/gridEficiencia" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Mês"
+        android:id="@+id/kmMes"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:layout_alignBaseline="@+id/kmAno"
+        android:layout_alignBottom="@+id/kmAno"
+        android:layout_centerHorizontal="true" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ano"
+        android:id="@+id/kmAno"
+        android:layout_row="0"
+        android:layout_column="2"
+        android:layout_below="@+id/kmTotal"
+        android:layout_alignRight="@+id/kmTotal"
+        android:layout_alignEnd="@+id/kmTotal" />
+
+    <View
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:background="#CDC5BF"
+        android:id="@+id/linhaKmtotal01"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_below="@+id/kmAno"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Kilometragem Total"
+        android:id="@+id/kmTotal"
+        android:layout_below="@+id/totConsumo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="61dp" />
+
+
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gridConsumo02"
+        android:layout_below="@+id/linhaKmtotal01"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15,00R$    "
+            android:id="@+id/kmValorDia"
+            android:layout_row="0"
+            android:layout_column="0" />
+
+        <View
+            android:layout_height="15dp"
+            android:layout_width="1dp"
+            android:background="#CDC5BF"
+            android:layout_marginTop="2dp"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:id="@+id/linhaGridKm01" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   450,00R$   "
+            android:id="@+id/kmValorMes"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:layout_alignBottom="@+id/custoAno"
+            android:layout_alignLeft="@+id/custoAno"
+            android:layout_alignStart="@+id/custoAno" />
+
+        <View
+            android:layout_height="15dp"
+            android:layout_width="1dp"
+            android:background="#CDC5BF"
+            android:layout_marginTop="2dp"
+            android:layout_column="3"
+            android:layout_row="0"
+            android:id="@+id/linhaGridKm02" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   12342KM"
+            android:id="@+id/kmValorAno"
+            android:layout_row="0"
+            android:layout_column="4" />
+
+    </GridLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Eficiência"
+        android:id="@+id/eficiencia"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="61dp"
+        android:gravity="center"
+        android:layout_below="@+id/gridConsumo02"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <View
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:background="#CDC5BF"
+        android:id="@+id/linhaEficiencia1"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_below="@+id/eficiencia"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"/>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/gridEficiencia"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linhaEficiencia1"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="11km/l  "
+            android:textColor="#FF0000"
+            android:id="@+id/menorConsumo"
+            android:layout_row="0"
+            android:layout_column="0" />
+
+        <View
+            android:layout_height="15dp"
+            android:layout_width="1dp"
+            android:background="#CDC5BF"
+            android:layout_marginTop="2dp"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:id="@+id/linhaGridConsumo01" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  13km/l  "
+            android:textColor="#0000FF"
+            android:id="@+id/consumoMedio"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:layout_alignBottom="@+id/custoAno"
+            android:layout_alignLeft="@+id/custoAno"
+            android:layout_alignStart="@+id/custoAno" />
+
+        <View
+            android:layout_height="15dp"
+            android:layout_width="1dp"
+            android:background="#CDC5BF"
+            android:layout_marginTop="2dp"
+            android:layout_column="3"
+            android:layout_row="0"
+            android:id="@+id/linhaGridConumo02" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  15km/l"
+            android:textColor="#228B22"
+            android:id="@+id/maiorConsumo"
+            android:layout_row="0"
+            android:layout_column="4" />
+
+
+    </GridLayout>
+
+    <View
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:background="#CDC5BF"
+        android:id="@+id/linhaEficiencia2"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_below="@+id/gridEficiencia"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"/>
+
+</RelativeLayout>

@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.evandro.tcc.suitecar.Preventiva"
+    tools:showIn="@layout/activity_preventiva">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="PREVENTIVA"
+        android:id="@+id/preventivaTrext"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Item"
+        android:id="@+id/itemPrev"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_gravity="center"
+        android:layout_below="@+id/preventivaTrext"
+        android:layout_toLeftOf="@+id/preventivaTrext"
+        android:layout_toStartOf="@+id/preventivaTrext"
+        android:layout_marginRight="37dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginTop="70dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Proxíma Troca"
+        android:id="@+id/proxTroca"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:layout_gravity="center"
+        android:layout_marginRight="37dp"
+        android:layout_marginEnd="37dp"
+        android:layout_alignTop="@+id/itemPrev"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/proxTroca"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/tablePreventiva">
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#CDC5BF"
+            android:id="@+id/linhaPreventiva01"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_below="@+id/proxTroca"
+            android:layout_centerHorizontal="true" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Filtro de óleo"
+                android:id="@+id/textFiltroDeOleo"
+                android:layout_column="0"
+                android:layout_weight="2"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="2382KM"
+                android:id="@+id/restFiltroOleo"
+                android:layout_column="1"
+                android:layout_weight="1" />
+
+
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#CDC5BF"
+            android:id="@+id/linhaPreventiva02"
+            android:layout_marginTop="3dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_below="@+id/restFiltroOleo"
+            android:layout_centerHorizontal="true" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_marginTop="3dp"
+
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Filtro de Ar"
+                android:id="@+id/textFiltraAr"
+                android:layout_column="0"
+                android:layout_weight="2"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="1382KM"
+                android:id="@+id/restFiltroAr"
+                android:layout_column="1"
+                android:layout_weight="1" />
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#CDC5BF"
+            android:id="@+id/linhaPreventiva03"
+            android:layout_marginTop="3dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_below="@+id/restFiltroAr"
+            android:layout_centerHorizontal="true" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_marginTop="3dp"
+
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Troca de Óleo"
+                android:id="@+id/textTrocaOleo"
+                android:layout_column="0"
+                android:layout_weight="2"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="382KM"
+                android:id="@+id/restTrocaOleo"
+                android:layout_column="1"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#CDC5BF"
+            android:id="@+id/linhaPreventiva04"
+            android:layout_marginTop="3dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_below="@+id/restTrocaOleo"
+            android:layout_centerHorizontal="true" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_marginTop="3dp"
+
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Fluído de Arrefecimento"
+                android:id="@+id/textFluidoArref"
+                android:layout_column="0"
+                android:layout_weight="2"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="4536KM"
+                android:id="@+id/restFluidoArref"
+                android:layout_column="1"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#CDC5BF"
+            android:id="@+id/linhaPreventiva05"
+            android:layout_marginTop="3dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_below="@+id/restFluidoArref"
+            android:layout_centerHorizontal="true" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_marginTop="3dp"
+
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Pastilha de Freio"
+                android:id="@+id/textPastFreio"
+                android:layout_column="0"
+                android:layout_weight="2"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="8560KM"
+                android:id="@+id/restPastFreio"
+                android:layout_column="1"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#CDC5BF"
+            android:id="@+id/linhaPreventiva06"
+            android:layout_marginTop="3dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_below="@+id/restPastFreio"
+            android:layout_centerHorizontal="true" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_marginTop="3dp"
+
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Balanciamento e Alinhamento"
+                android:id="@+id/textAlinhamento"
+                android:layout_column="0"
+                android:layout_weight="2"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="14353KM"
+                android:id="@+id/restAlinhamento"
+                android:layout_column="1"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#CDC5BF"
+            android:id="@+id/linhaPreventiva07"
+            android:layout_marginTop="3dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_below="@+id/restAlinhamento"
+            android:layout_centerHorizontal="true" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_marginTop="3dp"
+
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Troca de Velas"
+                android:id="@+id/textVelas"
+                android:layout_column="0"
+                android:layout_weight="2"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="6468KM"
+                android:id="@+id/restVelas"
+                android:layout_column="1"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#CDC5BF"
+            android:id="@+id/linhaPreventiva08"
+            android:layout_marginTop="3dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_below="@+id/restVelas"
+            android:layout_centerHorizontal="true" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_marginTop="3dp"
+
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Filtro de Combustível"
+                android:id="@+id/textFiltroCombust"
+                android:layout_column="0"
+                android:layout_weight="2"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="6548KM"
+                android:id="@+id/restFiltroCombust"
+                android:layout_column="1"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#CDC5BF"
+            android:id="@+id/linhaPreventiva09"
+            android:layout_marginTop="3dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_below="@+id/restFiltroCombust"
+            android:layout_centerHorizontal="true" />
+    </TableLayout>
+</RelativeLayout>
