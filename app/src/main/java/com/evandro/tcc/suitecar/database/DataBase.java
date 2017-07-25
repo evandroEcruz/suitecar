@@ -24,7 +24,7 @@ public class DataBase extends OrmLiteSqliteOpenHelper {
     private static final String databaseName = "suiteCar.db";
     private static DataBase db;
     private static final AtomicInteger usageCounter = new AtomicInteger(0);
-    private static final int VersaoBanco = 17;
+    private static final int VersaoBanco = 21;
 
     private VeiculoDao veiculoDao = null;
     private PreventivaDao preventivaDao = null;

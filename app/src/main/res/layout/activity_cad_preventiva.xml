@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/filtroAr"
-        android:hint="Filtrto de Ar"
+        android:hint="Filtro de Ar"
         android:layout_below="@+id/filtroOleo"
         android:layout_centerHorizontal="true" />
 
@@ -65,7 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/balanciamento"
-        android:hint="Alinhas e Balanciar"
+        android:hint="Alinhar e Balanciar"
         android:layout_below="@+id/pastFreio"
         android:layout_centerHorizontal="true" />
 

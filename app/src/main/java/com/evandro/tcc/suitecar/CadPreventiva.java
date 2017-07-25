@@ -34,11 +34,6 @@ public class CadPreventiva extends AppCompatActivity {
 
                 preventiva = new TablePreventiva();
 
-                // lê a passagem de parametro da activity CadastroVeiculo
-                Bundle args = getIntent().getBundleExtra("veiculo");
-                preventiva.setVeiculo((TableVeiculo)args.getSerializable("veiculo"));
-                veiculo = (TableVeiculo) args.getSerializable("veiculo");
-
                 EditText filtroOleo = (EditText) findViewById(R.id.filtroOleo);
                 EditText filtroAr = (EditText) findViewById(R.id.filtroAr);
                 EditText trocaOleo = (EditText) findViewById(R.id.trocaOleo);
@@ -47,32 +42,31 @@ public class CadPreventiva extends AppCompatActivity {
                 EditText balanciamento = (EditText) findViewById(R.id.balanciamento);
                 EditText trocaVela = (EditText) findViewById(R.id.trocaVela);
 
-                preventiva.setFiltro_oleo(Float.parseFloat(filtroOleo.getText().toString().trim()));
-                preventiva.setFiltro_ar(Float.parseFloat(filtroAr.getText().toString().trim()));
-                preventiva.setTroca_oleo(Float.parseFloat(trocaOleo.getText().toString().trim()));
-                preventiva.setFluido_arref(Float.parseFloat(fluidoArref.getText().toString().trim()));
-                preventiva.setPastilha_freio(Float.parseFloat(pastFreio.getText().toString().trim()));
-                preventiva.setBalanceamento(Float.parseFloat(balanciamento.getText().toString().trim()));
-                preventiva.setTroca_oleo(Float.parseFloat(trocaVela.getText().toString()));
-
-
 
                 try {
-                    veiculo = db.getVeiculoDao().queryForId((int) veiculo.getId_veiculo());
+                    Bundle args = getIntent().getBundleExtra("veiculo");
+                    veiculo = (TableVeiculo) args.getSerializable("veiculo");
+                    TableVeiculo veiculoCarregado = db.getVeiculoDao().queryForId((int) veiculo.getId_veiculo());
+
+                    preventiva.setVeiculo(veiculoCarregado);
+
+                    preventiva.setFiltro_oleo(Float.parseFloat(filtroOleo.getText().toString().trim()));
+                    preventiva.setFiltro_ar(Float.parseFloat(filtroAr.getText().toString().trim()));
+                    preventiva.setTroca_oleo(Float.parseFloat(trocaOleo.getText().toString().trim()));
+                    preventiva.setFluido_arref(Float.parseFloat(fluidoArref.getText().toString().trim()));
+                    preventiva.setPastilha_freio(Float.parseFloat(pastFreio.getText().toString().trim()));
+                    preventiva.setBalanceamento(Float.parseFloat(balanciamento.getText().toString().trim()));
+                    preventiva.setVelas(Float.parseFloat(trocaVela.getText().toString()));
+
                     db.getPreventivaDao().create(preventiva);
-                    veiculo.setPreventiva(preventiva);
-                    db.getVeiculoDao().update(veiculo);
+                    veiculoCarregado.setPreventiva(preventiva);
+                    db.getVeiculoDao().update(veiculoCarregado);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
 
-
-
-
-                Intent intent = new Intent(view.getContext(), TelaInicial.class);
-                Bundle args1 = new Bundle();
-                args.putSerializable("veiculo", veiculo);
-                intent.putExtra ("veiculo", args1);
+                // lê a passagem de parametro da activity CadastroVeiculo
+                Intent intent = new Intent(view.getContext(), ListaVeiculos.class);
                 startActivity(intent);
 
             }
