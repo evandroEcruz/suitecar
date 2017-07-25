@@ -27,7 +27,7 @@ public class TableVeiculo implements Serializable {
     TablePreventiva preventiva;
     @DatabaseField (foreign = true, columnName = "relatorio", foreignAutoRefresh = true)
     TableDadosRelat relat;
-    @ForeignCollectionField
+    @ForeignCollectionField(eager = true)
     private Collection<TableCombustivel> combustivel;
 
     public TablePreventiva getPreventiva() {

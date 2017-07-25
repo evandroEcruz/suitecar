@@ -12,11 +12,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.database.sqlite.*;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.evandro.tcc.suitecar.database.DataBase;
+import com.evandro.tcc.suitecar.database.TableCombustivel;
 import com.evandro.tcc.suitecar.database.TableDadosRelat;
+import com.evandro.tcc.suitecar.database.TablePreventiva;
 import com.evandro.tcc.suitecar.database.TableVeiculo;
 import com.evandro.tcc.suitecar.database.databaseDao.VeiculoDao;
 import com.evandro.tcc.suitecar.database.databaseDao.CombustivelDao;
@@ -28,6 +29,7 @@ import org.joda.time.Period;
 import org.w3c.dom.Text;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class TelaInicial extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,6 +46,9 @@ public class TelaInicial extends AppCompatActivity
     private Duration duration;
     private TableVeiculo veiculo;
 
+    private String nextRevisionName = "";
+    private float nextRevisionValue = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -53,18 +58,6 @@ public class TelaInicial extends AppCompatActivity
         setContentView(R.layout.activity_tela_inicial);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
-     /*   FloatingActionButton add = (FloatingActionButton) findViewById(R.id.botaoAddAbast);
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent addCombustivel = new Intent(view.getContext(), CadCombustivel.class);
-                startActivity(addCombustivel);
-            }
-        });
-    */
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -82,19 +75,20 @@ public class TelaInicial extends AppCompatActivity
 
         db = DataBase.getDatabase(this);
 
-        // lê a passagem de parametro da activity CadastroVeiculo
         Bundle args = getIntent().getBundleExtra("veiculo");
         veiculo = (TableVeiculo) args.getSerializable("veiculo");
 
 
         try {
-            if (veiculo.getRelat() != null){
-                relat = new TableDadosRelat();
-                relat = veiculo.getRelat();
+            TableVeiculo veiculoCarregado = db.getVeiculoDao().queryForId((int) veiculo.getId_veiculo());
+            this.getNextRevision(veiculoCarregado);
+
+            if (veiculoCarregado.getRelat() != null){
+                TableDadosRelat relat = veiculo.getRelat();
                 db.getDadosRelatDao().refresh(relat);
                 TextView autonomia = (TextView)findViewById(R.id.autonomia);
                 TextView quantLitros = (TextView)findViewById(R.id.quantLitros);
-                autonomia.setText(String.valueOf(" "+relat.getKmAbastecimento()+"KM "));
+                autonomia.setText(String.valueOf("R$ "+relat.getUltimo_valor()+" "));
                 quantLitros.setText(String.valueOf(" "+relat.getLitroAbastecimento()+"L "));
             }
 
@@ -103,10 +97,49 @@ public class TelaInicial extends AppCompatActivity
         }
 
 
+        TextView kmRestProxManutencao = (TextView)findViewById(R.id.kmRestProxManutencao);
+        TextView itemProxManutencao = (TextView)findViewById(R.id.itemProxManutencao);
+        kmRestProxManutencao.setText(String.valueOf(this.nextRevisionValue+"KM"));
+        itemProxManutencao.setText(this.nextRevisionName);
+
+
 
         TextView totHodometro = (TextView)findViewById(R.id.totHodometro);
         totHodometro.setText(String.valueOf(veiculo.getHodometro()));
     }
+
+    private void getNextRevision(TableVeiculo veiculo) {
+        TablePreventiva preventiva = veiculo.getPreventiva();
+        this.calculateValue("Filtro Óleo", veiculo, preventiva.getFiltro_oleo());
+        this.calculateValue("Filtro de Ar", veiculo, preventiva.getFiltro_ar());
+        this.calculateValue("Troca de Óleo", veiculo, preventiva.getTroca_oleo());
+        this.calculateValue("Fluído de Arrefecimento", veiculo, preventiva.getFluido_arref());
+        this.calculateValue("Pastilha de Freio", veiculo, preventiva.getPastilha_freio());
+        this.calculateValue("Alin. & Balanc.", veiculo, preventiva.getBalanceamento());
+        this.calculateValue("Troca de Velas", veiculo, preventiva.getVelas());
+    }
+
+    private void calculateValue(String fieldName, TableVeiculo veiculo, float preventiveValue) {
+        float result = 0;
+        if (preventiveValue > veiculo.getHodometro()) {
+            result = preventiveValue - veiculo.getHodometro();
+        } else if (veiculo.getHodometro() % preventiveValue == 0) {
+            result = preventiveValue;
+        } else {
+            result = veiculo.getHodometro() % preventiveValue;
+        }
+
+        if (fieldName == "Filtro Óleo") {
+            this.nextRevisionValue = result;
+            this.nextRevisionName = fieldName;
+        } else {
+            if (result < this.nextRevisionValue) {
+                this.nextRevisionName = fieldName;
+                this.nextRevisionValue = result;
+            }
+        }
+    }
+
 
     @Override
     public void onBackPressed() {
