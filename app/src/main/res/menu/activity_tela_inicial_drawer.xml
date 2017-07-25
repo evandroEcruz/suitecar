@@ -4,11 +4,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/bBarcadVeiculo"
-            android:icon="@drawable/ic_menu_camera"
+
             android:title="Veículos" />
         <item
             android:id="@+id/bBarcombustivel"
-            android:icon="@drawable/ic_menu_gallery"
+
             android:title="Combustível" />
 <!--        <item
             android:id="@+id/nav_slideshow"
@@ -17,7 +17,7 @@
  -->
         <item
             android:id="@+id/bBarpreventiva"
-            android:icon="@drawable/ic_menu_manage"
+
             android:title="Preventiva" />
     </group>
 

@@ -75,34 +75,43 @@ public class CadCombustivel extends AppCompatActivity {
                     veiculoCarregado.getCombustivel().add(combustivel);
 
                     if (veiculoCarregado.getRelat() == null){
-                        relat.setprimeiraData(DateTime.parse("2016-11-01T17:16:17.297-03:00"));
-                        relat.setUltimoHodometro(veiculoCarregado.getHodometro());
+                        relat.setprimeiraData(DateTime.parse("2017-07-25T17:16:17.297-03:00"));
+                        periodo = new Duration (relat.getprimeiraData(), new DateTime());
+                        relat.setUltimoHodometro(combustivel.getAtual_kmrodado());
                         relat.setTot_gasto(relat.getTot_gasto() + combustivel.getAtual_valor());
                         relat.setKmAbastecimento(veiculoCarregado.getHodometro() - relat.getUltimoHodometro());
                         relat.setLitroAbastecimento(combustivel.getAtual_litro());
                         relat.setUltimo_valor(combustivel.getAtual_valor());
+                        relat.setValorDia(relat.getTot_gasto()/(periodo.getStandardDays()+1));
+                        relat.setValorMes(relat.getTot_gasto());
+                        relat.setValorAno(relat.getTot_gasto());
+                        relat.setKmDia(veiculoCarregado.getHodometro() / (periodo.getStandardDays()+1));
+                        relat.setKmMes(veiculoCarregado.getHodometro());
+                        relat.setKmAno(veiculoCarregado.getHodometro());
                         veiculoCarregado.setRelat(relat);
                         relat.setVeiculo(veiculoCarregado);
                     } else {
 
                         relat = veiculoCarregado.getRelat();
-                        db.getDadosRelatDao().refresh(relat);
 
-                        relat.setprimeiraData(DateTime.parse("2015-11-01T17:16:17.297-03:00"));
+                        relat.setprimeiraData(DateTime.parse("2017-07-25T17:16:17.297-03:00"));
                         relat.setTot_gasto(relat.getTot_gasto() + combustivel.getAtual_valor());
                         periodo = new Duration(relat.getprimeiraData(), new DateTime());
-                        relat.setValorDia(relat.getTot_gasto()/periodo.getStandardDays());
-
-                        relat.setKmDia(veiculoCarregado.getHodometro() / periodo.getStandardDays());
-                        if (((int)periodo.getStandardDays()/30) >= 1){
-                            relat.setValorMes(relat.getTot_gasto()/((int)periodo.getStandardDays()/30));
-                            relat.setKmMes(veiculoCarregado.getHodometro()/((int)periodo.getStandardDays()/30));
-                        }
-
-                        if (((int)(periodo.getStandardDays()/30)/12) >= 1){
-                            relat.setValorAno(relat.getTot_gasto()/((int)(periodo.getStandardDays()/30)/12));
-                            relat.setKmAno(veiculoCarregado.getHodometro()/((int)(periodo.getStandardDays()/30)/12));
-                        }
+                        relat.setValorDia(relat.getTot_gasto()/(periodo.getStandardDays()+1));
+                        relat.setValorMes(relat.getTot_gasto());
+                        relat.setValorAno(relat.getTot_gasto());
+                        relat.setKmDia(veiculoCarregado.getHodometro() / (periodo.getStandardDays()+1));
+                        relat.setKmMes(veiculoCarregado.getHodometro());
+                        relat.setKmAno(veiculoCarregado.getHodometro());
+//                        if (((int)periodo.getStandardDays()/30) >= 1){
+//                            relat.setValorMes(relat.getTot_gasto()/((int)periodo.getStandardDays()/30));
+//                            relat.setKmMes(veiculoCarregado.getHodometro()/((int)periodo.getStandardDays()/30));
+//                        }
+//
+//                        if (((int)(periodo.getStandardDays()/30)/12) >= 1){
+//                            relat.setValorAno(relat.getTot_gasto()/((int)(periodo.getStandardDays()/30)/12));
+//                            relat.setKmAno(veiculoCarregado.getHodometro()/((int)(periodo.getStandardDays()/30)/12));
+//                        }
 
                         eficiencia = (veiculoCarregado.getHodometro() - relat.getUltimoHodometro())/combustivel.getAtual_litro();
 
@@ -125,7 +134,7 @@ public class CadCombustivel extends AppCompatActivity {
                         relat.setKmAbastecimento(veiculoCarregado.getHodometro() - relat.getUltimoHodometro());
                         relat.setLitroAbastecimento(combustivel.getAtual_litro());
                         relat.setUltimo_valor(combustivel.getAtual_valor());
-                        relat.setUltimoHodometro(veiculoCarregado.getHodometro());
+                        relat.setUltimoHodometro(combustivel.getAtual_kmrodado());
                     }
 
                     db.getCombustivelDao().create(combustivel);

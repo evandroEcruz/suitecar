@@ -83,15 +83,17 @@ public class TelaInicial extends AppCompatActivity
             TableVeiculo veiculoCarregado = db.getVeiculoDao().queryForId((int) veiculo.getId_veiculo());
             this.getNextRevision(veiculoCarregado);
 
+
             if (veiculoCarregado.getRelat() != null){
-                TableDadosRelat relat = veiculo.getRelat();
-                db.getDadosRelatDao().refresh(relat);
+                TableDadosRelat relat = veiculoCarregado.getRelat();
                 TextView autonomia = (TextView)findViewById(R.id.autonomia);
                 TextView quantLitros = (TextView)findViewById(R.id.quantLitros);
                 autonomia.setText(String.valueOf("R$ "+relat.getUltimo_valor()+" "));
                 quantLitros.setText(String.valueOf(" "+relat.getLitroAbastecimento()+"L "));
             }
 
+            TextView totHodometro = (TextView)findViewById(R.id.totHodometro);
+            totHodometro.setText(String.valueOf(veiculoCarregado.getHodometro()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -102,10 +104,6 @@ public class TelaInicial extends AppCompatActivity
         kmRestProxManutencao.setText(String.valueOf(this.nextRevisionValue+"KM"));
         itemProxManutencao.setText(this.nextRevisionName);
 
-
-
-        TextView totHodometro = (TextView)findViewById(R.id.totHodometro);
-        totHodometro.setText(String.valueOf(veiculo.getHodometro()));
     }
 
     private void getNextRevision(TableVeiculo veiculo) {

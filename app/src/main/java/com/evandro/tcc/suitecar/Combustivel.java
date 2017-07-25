@@ -47,38 +47,33 @@ public class Combustivel extends AppCompatActivity {
         TextView consumoMedio = (TextView) findViewById(R.id.consumoMedio);
         TextView maiorConsumo = (TextView) findViewById(R.id.maiorConsumo);
 
-        // lê a passagem de parametro da activity CadastroVeiculo
-        Bundle args = getIntent().getBundleExtra("veiculo");
-        veiculo = (TableVeiculo) args.getSerializable("veiculo");
+        try {
+            Bundle args = getIntent().getBundleExtra("veiculo");
+            veiculo = (TableVeiculo) args.getSerializable("veiculo");
+            TableVeiculo veiculoCarregado = db.getVeiculoDao().queryForId((int) veiculo.getId_veiculo());
 
-        if (veiculo.getRelat() != null){
-            relat = new TableDadosRelat();
-            relat = veiculo.getRelat();
-            try {
-                //   veiculo = db.getVeiculoDao().queryForId((int) veiculoCash.getId_veiculo());
-                db.getDadosRelatDao().refresh(relat);
-            } catch (SQLException e) {
-                e.printStackTrace();
+            TableDadosRelat relat = veiculoCarregado.getRelat();
+
+            if (relat != null){
+
+                DecimalFormat df = new DecimalFormat("0.0");
+
+                custoDia.setText(String.valueOf(df.format(relat.getValorDia())));
+                custoMes.setText(String.valueOf(df.format(relat.getValorMes())));
+                custoAno.setText(String.valueOf(df.format(relat.getValorAno())));
+                totConsumo.setText(String.valueOf(relat.getTot_gasto()));
+                kmValorDia.setText(String.valueOf(df.format(relat.getKmDia())));
+                kmValorMes.setText(String.valueOf(df.format(relat.getKmMes())));
+                kmValorAno.setText(String.valueOf(df.format(relat.getKmAno())));
+                menorConsumo.setText(String.valueOf(df.format(relat.getBaixa_efi())));
+                consumoMedio.setText(String.valueOf(df.format(relat.getMedia_efi())));
+                maiorConsumo.setText(String.valueOf(df.format(relat.getAlta_efi())));
+            } else {
+                Toast.makeText(getApplicationContext(), "Registre um abastecimento para gerar relatórios!", Toast.LENGTH_LONG).show();
             }
-
-            DecimalFormat df = new DecimalFormat("0.0");
-
-            custoDia.setText(String.valueOf(df.format(relat.getValorDia())));
-            custoMes.setText(String.valueOf(df.format(relat.getValorMes())));
-            custoAno.setText(String.valueOf(df.format(relat.getValorAno())));
-            totConsumo.setText(String.valueOf(relat.getTot_gasto()));
-            kmValorDia.setText(String.valueOf(df.format(relat.getKmDia())));
-            kmValorMes.setText(String.valueOf(df.format(relat.getKmMes())));
-            kmValorAno.setText(String.valueOf(df.format(relat.getKmAno())));
-            menorConsumo.setText(String.valueOf(df.format(relat.getBaixa_efi())));
-            consumoMedio.setText(String.valueOf(df.format(relat.getMedia_efi())));
-            maiorConsumo.setText(String.valueOf(df.format(relat.getAlta_efi())));
-        } else {
-            Toast.makeText(getApplicationContext(), "Registre um abastecimento para gerar relatórios!", Toast.LENGTH_LONG).show();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.botaoAddAbast);
         fab.setOnClickListener(new View.OnClickListener() {
